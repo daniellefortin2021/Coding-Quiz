@@ -30,6 +30,8 @@ var quizQuestions = [
 ];
 
 var startQuizDiv = document.querySelector("startQuiz");
+var questionDiv = document.querySelector("questionDiv");
+
 // starts timer when clicking start quiz button
 function setTimer(){
     setQuestions();
@@ -50,19 +52,20 @@ function setTimer(){
 function setQuestions (){
     //clears existing content out of div
     startQuiz.innerHTML = "";
-    createH1Element(questionOne.question);
+    
 }
 
-function createH1Element(text){
 
+
+//createH1Element(questionOne.question);
+//function createH1Element(q1){
     // code to create question
-    var h1 = document.createElement("H1");
-    var t = document.createTextNode(text);
-    h1.appendChild(t);
-    startQuiz.appendChild(h1);
+   // var h1 = document.createElement("H1");
+   // var t = document.createTextNode(q1);
+   // h1.appendChild(t);
+   // startQuiz.appendChild(h1);
 
-
-}
+//}
 
 
 
