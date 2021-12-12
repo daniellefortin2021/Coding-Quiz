@@ -11,16 +11,19 @@
 <body>
     <div class="header-links">
         <a href="" class="highscores">View Highscores</a>
-        <div>Current time</div>
+        <div class="timer" id="timer">Time: 0</div>
     </div>
     
-    <div class="start-quiz">
+    <div class="startQuiz" id="startQuiz">
         <h1>Danielle's Coding Quiz</h1>
         <p>Try to answer the following coding questions within the time limit. Keep in mind that all wrong answers will deduct 10 seconds from your time.</p>
-        <button class="start">Start Quiz</button>
+        <div class="center-button">
+            <button class="start" id="start" onclick = "setTimer()">Start Quiz</button>
+        </div>
+        
     </div>
 
-    <script></script>
+    <script src="assets/script.js"></script>
     
 </body>
 </html>
