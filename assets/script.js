@@ -1,9 +1,10 @@
+var questionOne = {
+    question: "Commonly used data types to NOT include:",
+    options: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
+};
+
 var quizQuestions = [
-    {
-        question: "Commonly used data types to NOT include:",
-        options: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
-    },
     {
         question: "The condition in an if/else statement is enclosed with _______.",
         options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
@@ -49,25 +50,27 @@ function setTimer(){
 function setQuestions (){
     //clears existing content out of div
     startQuiz.innerHTML = "";
-    //hoping this loops through questions?
-    for (var i = 0; i < quizQuestions.length; i++){
-        var questionLoop = questions[setQuestions].title;
-        var questionChoices = questions[setQuestions].options;
-        startQuiz.textContent = questionLoop;
-    }
-    // show first quiz
-    //on button click, switch to next question
+    createH1Element(questionOne.question);
+}
+
+function createH1Element(text){
+
+    // code to create question
+    var h1 = document.createElement("H1");
+    var t = document.createTextNode(text);
+    h1.appendChild(t);
+    startQuiz.appendChild(h1);
+
+
 }
 
 
-// Add questions and answers to the page 
 
+// show first quiz question
+    // create h1
+    // create options
+    //on button click, switch to next question & either confirm answer or deduct points
 
-// on click start quiz, clear current data
-// loop to loop through info in an array
-// show next question
-
-// determine if answer is correct
 
 //reach end of quiz and add message
 
