@@ -1,47 +1,26 @@
-var questionOne = {
-    question: "Commonly used data types to NOT include:",
-    options: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
-};
+var startQuizDiv = document.querySelector(".startQuiz");
+var questionDiv = document.querySelector(".questionDiv");
+var questionTitle = document.querySelector(".questionTitle");
+var A = document.querySelector("#btn-zero");
+var B = document.querySelector("#btn-one");
+var C = document.querySelector("#btn-two");
+var D = document.querySelector("#btn-three");
 
-var quizQuestions = [
-    {
-        question: "The condition in an if/else statement is enclosed with _______.",
-        options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
-        answer: "parenthesis"
-    },
-    {
-        question: "Arrays in JavaScript can be used to store ______.",
-        options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        answer: "all of the above"
-    },
-
-    {
-        question: "A very useful tool user during development and debugging for printing content to the debugger is",
-        options: ["JavaScript", "terminal/bash", "for loops", "console.log"],
-        answer: "console.log"
-    },
-
-    {
-        question: "String values must be enclosed within ____ when being assigned to variables.",
-        options: ["commas", "curly brackets", "quotes", "parenthesis"],
-        answer: "quotes"
-    }
-];
-
-var startQuizDiv = document.querySelector("startQuiz");
-var questionDiv = document.querySelector("questionDiv");
+var questionIndex = 0;
+var currentQuestion = 0;
+var timeLeft = 100;
+var quizTimer;
 
 // starts timer when clicking start quiz button
 function setTimer(){
     setQuestions();
     
-    var timeLeft = 100;
     var quizTimer = setInterval(function(){
         timer.innerHTML = timeLeft + " seconds remaining";
 
         timeLeft -= 1;
         if(timeLeft <=0){
+            // can only clear inside this function
             clearInterval(quizTimer);
             document.querySelector("timer").innerHTML = "Time is up!"
         }
@@ -49,31 +28,34 @@ function setTimer(){
     
 };
 
-function setQuestions (){
-    //clears existing content out of div
-    startQuiz.innerHTML = "";
-    
+function setQuestions(){
+    startQuiz.setAttribute("class", "hide");
+    questionDiv.removeAttribute("class", "hide"); 
+
+    nextQuestion();
+};
+
+function nextQuestion(){
+    questionTitle.textContent = questionIndex.question;
+    A.textContent = quizQuestions[questionIndex].options[0];
+    B.textContent = quizQuestions[questionIndex].options[1];
+    C.textContent = quizQuestions[questionIndex].options[2];
+    D.textContent = quizQuestions[questionIndex].options[3];
+
 }
 
 
+//for (var i = 0; i <quizQuestions.length; i++) {
 
-//createH1Element(questionOne.question);
-//function createH1Element(q1){
-    // code to create question
-   // var h1 = document.createElement("H1");
-   // var t = document.createTextNode(q1);
-   // h1.appendChild(t);
-   // startQuiz.appendChild(h1);
-
-//}
-
-
-
-// show first quiz question
-    // create h1
-    // create options
-    //on button click, switch to next question & either confirm answer or deduct points
-
+//var h1 = document.createElement("H1");
+   // currentQuestion = quizQuestions.question[0];
+   // h1.className = "questionTitle";
+   // h1.innerText = currentQuestion; // add next to be questions from array above 
+    // i feel like i need to set a certain var to 0
+  //  h1.appendChild(questionDiv); //append to the start quiz div that we clear at the beginning of the function?
+    
+    //check answer function
+    //add or deduct points
 
 //reach end of quiz and add message
 
