@@ -36,7 +36,7 @@ function setQuestions(){
 };
 
 function nextQuestion(){
-    questionTitle.textContent = questionIndex.question;
+    questionTitle.textContent = quizQuestions[questionIndex].question;
     A.textContent = quizQuestions[questionIndex].options[0];
     B.textContent = quizQuestions[questionIndex].options[1];
     C.textContent = quizQuestions[questionIndex].options[2];
