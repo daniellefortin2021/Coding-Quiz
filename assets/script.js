@@ -23,10 +23,9 @@ function setTimer(){
         timer.innerHTML = timeLeft + " seconds remaining";
 
         timeLeft -= 1;
-        if(timeLeft <=0){
-            // can only clear inside this function
+        if(timeLeft === 0 || questionIndex === quizQuestions.length){
             clearInterval(quizTimer);
-            document.querySelector("timer").innerHTML = "Time is up!"
+            document.querySelector(".timer").innerHTML = "Time is up!"
         }
         },1000);
     
@@ -48,7 +47,7 @@ function nextQuestion(){
         C.textContent = quizQuestions[questionIndex].options[2];
         D.textContent = quizQuestions[questionIndex].options[3];
     } else{
-        endGame();
+        gameOver();
      }
 };
 
@@ -69,7 +68,11 @@ function checkAnswer (event){
         }
 };
 
-//reach end of quiz and add message
+//reach end of quiz and begin high score
+function gameOver(){
+    questionDiv.setAttribute("class", "hide");
+    checkHighScore(account.score);
+}
 
 //highscores
 
