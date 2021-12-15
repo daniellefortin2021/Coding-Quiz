@@ -36,6 +36,12 @@ body{
     align-items: center;
 }
 
+.questionOptions{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .highscores{
     text-decoration: none;
     font-style: bolder;
@@ -74,22 +80,10 @@ button:hover{
     border: solid 4px var(--secondary-color);
 }
 
-.questionDiv{
-    padding: 8%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 .hide{
     display: none;
-}
-
-.questionOptions{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .quiz-button{

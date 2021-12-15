@@ -1,12 +1,16 @@
 var startQuizDiv = document.querySelector(".startQuiz");
 var questionDiv = document.querySelector(".questionDiv");
 var questionTitle = document.querySelector(".questionTitle");
+var quizButton = document.querySelector(".quiz-button");
+var checkQuestionText = document.querySelector(".checkQuestion");
+
 var A = document.querySelector("#btn-zero");
 var B = document.querySelector("#btn-one");
 var C = document.querySelector("#btn-two");
 var D = document.querySelector("#btn-three");
 
 var questionIndex = 0;
+var score = 0;
 var currentQuestion = 0;
 var timeLeft = 100;
 var quizTimer;
@@ -35,28 +39,46 @@ function setQuestions(){
     nextQuestion();
 };
 
+//reset questionindex bc it is currently the same value as what it was originally set to
 function nextQuestion(){
     questionTitle.textContent = quizQuestions[questionIndex].question;
     A.textContent = quizQuestions[questionIndex].options[0];
     B.textContent = quizQuestions[questionIndex].options[1];
     C.textContent = quizQuestions[questionIndex].options[2];
     D.textContent = quizQuestions[questionIndex].options[3];
-
 }
 
+function checkAnswer (event){
+    // undefined
+    console.log(event.target.textContent);
+    if (event.target.textContent === quizQuestions[questionIndex].answer){
+         score ++
+         nextQuestion();
+         checkQuestionText.innerHTML = "Correct!";
+    } else if (event.target.textContent != quizQuestions[questionIndex].answer){
+        quizTimer - 10;
+        nextQuestion();
+        checkQuestionText.innerHTML = "Incorrect!";
+        }
 
+    
+};
+
+
+// loop function to loop through check answer and next function until no more questions 
 //for (var i = 0; i <quizQuestions.length; i++) {
 
-//var h1 = document.createElement("H1");
-   // currentQuestion = quizQuestions.question[0];
-   // h1.className = "questionTitle";
-   // h1.innerText = currentQuestion; // add next to be questions from array above 
-    // i feel like i need to set a certain var to 0
-  //  h1.appendChild(questionDiv); //append to the start quiz div that we clear at the beginning of the function?
-    
     //check answer function
     //add or deduct points
 
 //reach end of quiz and add message
 
-//highschores
+//highscores
+
+//call back function
+A.addEventListener("click", function(event){checkAnswer(event)});
+B.addEventListener("click", function(event){checkAnswer(event)}); 
+C.addEventListener("click", function(event){checkAnswer(event)}); 
+D.addEventListener("click", function(event){checkAnswer(event)});  
+
+console.log(quizButton);
