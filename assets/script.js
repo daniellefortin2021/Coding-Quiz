@@ -56,7 +56,7 @@ function checkAnswer (event){
     // undefined
     console.log(event.target.textContent);
     if (event.target.textContent === quizQuestions[questionIndex].answer){
-         score ++
+         score = score + 10
          questionIndex++
          nextQuestion();
          checkQuestionText.innerHTML = "Correct!";
@@ -70,8 +70,21 @@ function checkAnswer (event){
 
 //reach end of quiz and begin high score
 function gameOver(){
-    questionDiv.setAttribute("class", "hide");
-    checkHighScore(account.score);
+    questionDiv.innerHTML = "";
+    
+    //create heading for "you finished!"
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("class","youFinished");
+    createH1.textContent = "You finished!"
+
+    questionDiv.appendChild(createH1);
+    console.log(createH1);
+
+    //create "your highscore is"
+    var createP = document.createElement("p");
+    createP.setAttribute("class","finalScore")
+    createP.textContent = "Your final score is: " + score;
+    questionDiv.appendChild(createP);
 }
 
 //highscores
