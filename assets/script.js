@@ -39,18 +39,20 @@ function setQuestions(){
     nextQuestion();
 };
 
-//reset questionindex bc it is currently the same value as what it was originally set to
+// this function loops through different questions or sends user to the highscore page
 function nextQuestion(){
-    questionTitle.textContent = quizQuestions[questionIndex].question;
-    A.textContent = quizQuestions[questionIndex].options[0];
-    B.textContent = quizQuestions[questionIndex].options[1];
-    C.textContent = quizQuestions[questionIndex].options[2];
-    D.textContent = quizQuestions[questionIndex].options[3];
+    if (questionIndex < 5){
+        questionTitle.textContent = quizQuestions[questionIndex].question;
+        A.textContent = quizQuestions[questionIndex].options[0];
+        B.textContent = quizQuestions[questionIndex].options[1];
+        C.textContent = quizQuestions[questionIndex].options[2];
+        D.textContent = quizQuestions[questionIndex].options[3];
+    } else{
+        endGame();
+     }
+};
 
-    // if questionIndex <5 run next question
-    // if questionIndex >5 run end quiz page. 
-}
-
+//checks user's answer and either adds a score point or deducts time 
 function checkAnswer (event){
     // undefined
     console.log(event.target.textContent);
