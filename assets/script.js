@@ -3,6 +3,7 @@ var questionDiv = document.querySelector(".questionDiv");
 var questionTitle = document.querySelector(".questionTitle");
 var quizButton = document.querySelector(".quiz-button");
 var checkQuestionText = document.querySelector(".checkQuestion");
+var viewHighScores = document.querySelector(".higscores");
 
 var A = document.querySelector("#btn-zero");
 var B = document.querySelector("#btn-one");
@@ -78,7 +79,6 @@ function gameOver(){
     createH1.textContent = "You finished!"
 
     questionDiv.appendChild(createH1);
-    console.log(createH1);
 
     //create "your highscore is"
     var createP = document.createElement("p");
@@ -110,12 +110,6 @@ function gameOver(){
     createSubmitButton.textContent = "Submit your high score";
     createInputDiv.appendChild(createSubmitButton);
 
-    //create highscore button
-    var createHighScoresButton = document.createElement("p");
-    createHighScoresButton.setAttribute("class", "viewHighScores");
-    createSubmitButton.textContent ="<a href="#">View HighScores</a>";
-    questionDiv.appendChild(createHighScoresButton);
-
     //event listener for submit button to add name to local storage
     createSubmitButton.addEventListener("click", function(){
         var scoreName = createInput.value;
@@ -125,18 +119,18 @@ function gameOver(){
             individualScore: score
         }
         
-        console.log(highScore);
+        // add variable for all higschores, and add highscore to that variable .setItem("allScores", "newScore")
         localStorage.setItem("highScore",JSON.stringify(highScore));
-
         createInput.value="";
 
     })
 }
 
-//highscores
+
 
 //call back function
 A.addEventListener("click", function(event){checkAnswer(event)});
 B.addEventListener("click", function(event){checkAnswer(event)}); 
 C.addEventListener("click", function(event){checkAnswer(event)}); 
 D.addEventListener("click", function(event){checkAnswer(event)});  
+
