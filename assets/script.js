@@ -109,6 +109,28 @@ function gameOver(){
     createSubmitButton.setAttribute("class", "submitButton");
     createSubmitButton.textContent = "Submit your high score";
     createInputDiv.appendChild(createSubmitButton);
+
+    //create highscore button
+    var createHighScoresButton = document.createElement("p");
+    createHighScoresButton.setAttribute("class", "viewHighScores");
+    createSubmitButton.textContent ="<a href="#">View HighScores</a>";
+    questionDiv.appendChild(createHighScoresButton);
+
+    //event listener for submit button to add name to local storage
+    createSubmitButton.addEventListener("click", function(){
+        var scoreName = createInput.value;
+
+        var highScore = {
+            name: scoreName,
+            individualScore: score
+        }
+        
+        console.log(highScore);
+        localStorage.setItem("highScore",JSON.stringify(highScore));
+
+        createInput.value="";
+
+    })
 }
 
 //highscores
@@ -118,5 +140,3 @@ A.addEventListener("click", function(event){checkAnswer(event)});
 B.addEventListener("click", function(event){checkAnswer(event)}); 
 C.addEventListener("click", function(event){checkAnswer(event)}); 
 D.addEventListener("click", function(event){checkAnswer(event)});  
-
-console.log(quizButton);
