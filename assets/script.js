@@ -46,6 +46,9 @@ function nextQuestion(){
     B.textContent = quizQuestions[questionIndex].options[1];
     C.textContent = quizQuestions[questionIndex].options[2];
     D.textContent = quizQuestions[questionIndex].options[3];
+
+    // if questionIndex <5 run next question
+    // if questionIndex >5 run end quiz page. 
 }
 
 function checkAnswer (event){
@@ -53,23 +56,16 @@ function checkAnswer (event){
     console.log(event.target.textContent);
     if (event.target.textContent === quizQuestions[questionIndex].answer){
          score ++
+         questionIndex++
          nextQuestion();
          checkQuestionText.innerHTML = "Correct!";
     } else if (event.target.textContent != quizQuestions[questionIndex].answer){
-        quizTimer - 10;
+        timeLeft = timeLeft - 10;
+        questionIndex++
         nextQuestion();
         checkQuestionText.innerHTML = "Incorrect!";
         }
-
-    
 };
-
-
-// loop function to loop through check answer and next function until no more questions 
-//for (var i = 0; i <quizQuestions.length; i++) {
-
-    //check answer function
-    //add or deduct points
 
 //reach end of quiz and add message
 
