@@ -85,6 +85,30 @@ function gameOver(){
     createP.setAttribute("class","finalScore")
     createP.textContent = "Your final score is: " + score;
     questionDiv.appendChild(createP);
+
+    //create div to host label and input
+    var createInputDiv = document.createElement("div");
+    createInputDiv.setAttribute("class", "inputDiv");
+    questionDiv.appendChild(createInputDiv);
+
+    //create label to associate with highscore
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("class", "createLabel");
+    createLabel.textContent = "Enter your name: ";
+    createInputDiv.appendChild(createLabel);
+
+    //create input to grab user's name
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("class", "input");
+    createInput.textContent = "";
+    createInputDiv.appendChild(createInput);
+
+    //create submit button
+    var createSubmitButton = document.createElement("button");
+    createSubmitButton.setAttribute("class", "submitButton");
+    createSubmitButton.textContent = "Submit your high score";
+    createInputDiv.appendChild(createSubmitButton);
 }
 
 //highscores
