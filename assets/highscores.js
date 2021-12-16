@@ -9,7 +9,7 @@ function createScoreLi (){
 
 //high scores load stored scores
 var loadScores = function (){
-    var savedScores = localStorage.getItem("highScore");
+    var savedScores = localStorage.getItem("allScores");
     savedScores = JSON.parse(savedScores);
 
     for (var i = 0; i < savedScores.length; i++){

@@ -120,7 +120,7 @@ function gameOver(){
         }
         
         // add variable for all higschores, and add highscore to that variable .setItem("allScores", "newScore")
-        localStorage.setItem("highScore",JSON.stringify(highScore));
+        localStorage.setItem("allScores",JSON.stringify(highScore));
         createInput.value="";
 
     })
