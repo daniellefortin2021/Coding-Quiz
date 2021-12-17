@@ -1,3 +1,12 @@
+/// global variables
+var questionIndex = 0;
+var score = 0;
+var currentQuestion = 0;
+var timeLeft = 100;
+var quizTimer;
+var highScore = [];
+
+/// query selectors
 var startQuizDiv = document.querySelector(".startQuiz");
 var questionDiv = document.querySelector(".questionDiv");
 var questionTitle = document.querySelector(".questionTitle");
@@ -10,13 +19,9 @@ var B = document.querySelector("#btn-one");
 var C = document.querySelector("#btn-two");
 var D = document.querySelector("#btn-three");
 
-var questionIndex = 0;
-var score = 0;
-var currentQuestion = 0;
-var timeLeft = 100;
-var quizTimer;
+// FUNCTIONS 
 
-// starts timer when clicking start quiz button
+/// starts timer when clicking start quiz button
 function setTimer(){
     setQuestions();
     
@@ -32,6 +37,7 @@ function setTimer(){
     
 };
 
+/// hides startQuiz div and brings up questionDiv. call next question function.
 function setQuestions(){
     startQuiz.setAttribute("class", "hide");
     questionDiv.removeAttribute("class", "hide"); 
@@ -39,7 +45,7 @@ function setQuestions(){
     nextQuestion();
 };
 
-// this function loops through different questions or sends user to the highscore page
+// Loops through different questions and then begins the highscore input function (gamOver)
 function nextQuestion(){
     if (questionIndex < 5){
         questionTitle.textContent = quizQuestions[questionIndex].question;
@@ -52,7 +58,7 @@ function nextQuestion(){
      }
 };
 
-//checks user's answer and either adds a score point or deducts time 
+//Upon every quiz button clicked, checks user's answer, adds a score point or deducts time, then moves to the next question
 function checkAnswer (event){
     // undefined
     console.log(event.target.textContent);
@@ -69,15 +75,15 @@ function checkAnswer (event){
         }
 };
 
-//reach end of quiz and begin high score
+//reach end of quiz and begin high score input
 function gameOver(){
+    //clears questionDiv
     questionDiv.innerHTML = "";
     
     //create heading for "you finished!"
     var createH1 = document.createElement("h1");
     createH1.setAttribute("class","youFinished");
     createH1.textContent = "You finished!"
-
     questionDiv.appendChild(createH1);
 
     //create "your highscore is"
@@ -116,16 +122,28 @@ function gameOver(){
 
         var highScore = {
             name: scoreName,
-            individualScore: score
+            individualScore: score};
+    
+        var allScores = localStorage.getItem("allScores");
+
+        // if all scores is empty, create an array to host all scores
+        if (allScores === null) {
+            allScores = [];
+        } else{
+            allScores = JSON.parse(allScores);
         }
-        
-        // add variable for all higschores, and add highscore to that variable .setItem("allScores", "newScore")
-        localStorage.setItem("allScores",JSON.stringify(highScore));
+    
+        allScores.push(highScore);
+        var newHighScore = JSON.stringify(allScores);
+        localStorage.setItem("allScores", newHighScore);
+
+        //localStorage.setItem("allScores",JSON.stringify(highScore));
+        //var savedScores = JSON.parse(localStorage.getItem("allScores"));
+
         createInput.value="";
 
     })
 }
-
 
 
 //call back function
