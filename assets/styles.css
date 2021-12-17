@@ -209,6 +209,12 @@ button:hover{
     background-color: var(--secondary-color);
 }
 
+.highScoreDiv{
+    margin-top: 100px;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
 .savedScoreDIV{
     padding: 8%;
     display: flex;
@@ -216,4 +222,9 @@ button:hover{
 
 .savedScores{
     font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
 }
+
